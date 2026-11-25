@@ -1,0 +1,902 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #071513;
+    color: #e2f1ee;
+    padding-bottom: 75px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0b201d;
+    padding: 10px 14px;
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.55);
+    border-bottom: 1px solid #163833;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu-icon {
+    font-size: 22px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: 900;
+    color: #34d399;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+}
+
+.nav-auth-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-register {
+    background-color: #10b981;
+    color: #041612;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.btn-register:hover {
+    background-color: #34d399;
+}
+
+.btn-login {
+    background-color: #132d29;
+    color: #d1fae5;
+    border: 1px solid #1f4942;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background-color: #193b36;
+}
+
+.user-panel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 13px;
+}
+
+.profile-container {
+    background: #122d28;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid #23544c;
+}
+
+.profile-icon {
+    font-size: 16px;
+}
+
+.btn-blue {
+    background-color: #10b981;
+    color: #041612;
+    font-weight: bold;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-blue:hover {
+    background-color: #34d399;
+}
+
+.btn-red {
+    background-color: #c0392b;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* 5 Quick Strip Items under አደይ BET */
+.top-five-bar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    background: #0c221f;
+    padding: 8px 6px;
+    border-radius: 8px;
+    border: 1px solid #173a35;
+    margin-bottom: 10px;
+}
+
+.top-five-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 4px 2px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.top-five-item:hover {
+    background: #13332e;
+}
+
+.top-five-icon {
+    font-size: 18px;
+    margin-bottom: 3px;
+}
+
+.top-five-item span:last-child {
+    font-size: 10px;
+    font-weight: bold;
+    color: #cbe7e2;
+    line-height: 1.15;
+}
+
+/* Auto-moving Main Hero Banner Slider */
+.banner-slider {
+    width: 100%;
+    height: 165px;
+    overflow: hidden;
+    position: relative;
+    background: #091a17;
+    border-radius: 10px;
+    border: 1px solid #173a35;
+    margin-bottom: 10px;
+}
+
+.banner-slider .slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.banner-slider .slide.active {
+    display: block;
+}
+
+.banner-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Manual-only Small Hero Cards (Smaller than Hero, user scrolls) */
+.mini-hero-strip {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 6px 2px;
+    margin-bottom: 10px;
+    scrollbar-width: none;
+}
+
+.mini-hero-strip::-webkit-scrollbar {
+    display: none;
+}
+
+.mini-hero-card {
+    flex: 0 0 calc((100% - 16px) / 3);
+    min-width: calc((100% - 16px) / 3);
+    background: #0d2420;
+    border: 1px solid #183d37;
+    border-radius: 8px;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.mini-hero-card img {
+    width: 100%;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.mini-hero-card p {
+    font-size: 10px;
+    font-weight: bold;
+    color: #d6efe9;
+    margin-top: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 10 Circular Games Bar */
+.scrolling-games-bar {
+    background: #0c221f;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #173a35;
+    margin-bottom: 10px;
+}
+
+.scrolling-games-bar h3 {
+    color: #34d399;
+    font-size: 12px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 4px 0;
+    scrollbar-width: none;
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-item {
+    min-width: 66px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scroll-item img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #10b981;
+    background: #122d28;
+}
+
+.scroll-item p {
+    font-size: 10px;
+    color: #cde7e2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 64px;
+    margin-top: 4px;
+    font-weight: bold;
+}
+
+/* Sports Layout & Theme */
+.sport-sub-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0d2320;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #b8d8d2;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #183d37;
+}
+
+.sport-sub-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.live-indicator {
+    color: #34d399;
+}
+
+.sport-invite-btn {
+    background: #11302b;
+    color: #34d399;
+    border: 1px solid #1f524a;
+    border-radius: 999px;
+    padding: 5px 11px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.sport-invite-btn:hover {
+    background: #163d37;
+}
+
+.sports-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sport-match-card {
+    background-color: #0c211e;
+    color: #e6f4f1;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.45);
+    border: 1px solid #173a35;
+}
+
+.match-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 8px;
+}
+
+.match-league {
+    font-size: 11px;
+    color: #34d399;
+    font-weight: bold;
+}
+
+.match-live-tag {
+    font-size: 10px;
+    color: #9bc5bd;
+    background: #112c28;
+    padding: 2px 7px;
+    border-radius: 4px;
+    border: 1px solid #1d4640;
+}
+
+.match-teams-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+    background: #091917;
+    padding: 8px 10px;
+    border-radius: 7px;
+    border: 1px solid #153530;
+}
+
+.team-side {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    font-size: 13px;
+    font-weight: bold;
+    color: #f0faf8;
+}
+
+.team-side.away {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.score-pill {
+    background: #122e2a;
+    color: #34d399;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 4px 9px;
+    border-radius: 5px;
+    border: 1px solid #204e47;
+    white-space: nowrap;
+}
+
+.match-odds-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+}
+
+.odd-box {
+    background: #102925;
+    padding: 7px 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    border: 1px solid #1b423c;
+    text-align: center;
+}
+
+.odd-box:hover {
+    background: #163833;
+    border-color: #29635a;
+}
+
+.odd-box span {
+    display: block;
+    color: #9bc5bd;
+    font-size: 10px;
+    margin-bottom: 2px;
+}
+
+.odd-box strong {
+    color: #34d399;
+}
+
+.bottom-nav-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #0b201d;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-top: 1px solid #163833;
+    z-index: 950;
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.55);
+}
+
+.bottom-nav-bar button {
+    background: none;
+    border: none;
+    color: #7da69f;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.bottom-nav-bar button.active-tab {
+    color: #34d399;
+    font-weight: bold;
+}
+
+.main-container {
+    padding: 12px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active-section {
+    display: block;
+}
+
+.search-box-inline {
+    margin-top: 6px;
+}
+
+.search-box-inline input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #1c443e;
+    background: #0c221f;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+/* 3 Games per row layout */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.game-card {
+    background: #0c221f;
+    border-radius: 6px;
+    padding: 6px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #173a35;
+}
+
+.game-card img {
+    width: 100%;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.game-card p {
+    margin-top: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #cbe7e2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.deposit-page-container, .promotion-page-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.promotion-page-container h2, .deposit-page-container h2, #gamesTab h2, #kenoTab h2 {
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.promo-banners-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.promo-banners-stack img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #173a35;
+}
+
+/* Deposit Page Styling */
+.deposit-box {
+    background: #0b201d;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid #173a35;
+}
+
+.telebirr-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    color: #e6f4f1;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.tele-logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.agent-info-card {
+    background: #0f2925;
+    border: 1px solid #1b433d;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.agent-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.agent-phone-display {
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+.agent-name-display {
+    font-size: 12px;
+    color: #9bc5bd;
+    margin-top: 2px;
+}
+
+.btn-copy-pill {
+    background: #143631;
+    color: #e6f4f1;
+    border: 1px solid #245c53;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-copy-pill:hover {
+    background: #1a453f;
+}
+
+.min-deposit-note {
+    font-size: 11px;
+    color: #b7d8d1;
+    line-height: 1.45;
+    padding-top: 8px;
+    border-top: 1px solid #193e38;
+}
+
+.deposit-steps-card {
+    background: #0e2622;
+    border-left: 3px solid #10b981;
+    border-radius: 8px;
+    padding: 10px 12px 10px 24px;
+    margin-bottom: 14px;
+}
+
+.deposit-steps-card ul {
+    color: #34d399;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.deposit-steps-card li {
+    margin-bottom: 6px;
+    color: #e2f4f0;
+    font-weight: 600;
+}
+
+.deposit-steps-card li:last-child {
+    margin-bottom: 0;
+}
+
+.deposit-steps-card li span {
+    color: #9bc5bd;
+    font-weight: 400;
+    font-size: 11px;
+}
+
+.deposit-field-label {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    color: #e2f4f0;
+    margin-bottom: 6px;
+}
+
+.deposit-amount-box {
+    width: 100%;
+    padding: 12px;
+    background: #112d28;
+    border: 1px solid #1f4f47;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.deposit-confirm-box {
+    width: 100%;
+    padding: 10px 12px;
+    background: #112d28;
+    border: 1px solid #1f4f47;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 12px;
+    resize: vertical;
+    margin-bottom: 14px;
+}
+
+.btn-deposit-submit {
+    width: 100%;
+    background-color: #10b981;
+    color: #041612;
+    font-weight: 800;,
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-deposit-submit:hover {
+    background-color: #34d399;
+}
+
+.copy-section input, .modal-content input, textarea {
+    width: 100%;
+    padding: 8px;
+    background: #102925;
+    border: 1px solid #1f4f47;
+    border-radius: 4px;
+    color: #fff;
+}
+
+/* Modals */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.82);
+}
+
+.auth-modal-content {
+    background-color: #0c211e;
+    color: #ffffff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 380px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+    border: 1px solid #193e38;
+}
+
+.auth-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+    color: #fff;
+}
+
+.brand-logo-box {
+    background: #102925;
+    color: #34d399;
+    font-weight: 900;
+    text-align: center;
+    padding: 8px;
+    border-radius: 6px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 1px solid #1f4f47;
+}
+
+.input-group {
+    margin-bottom: 12px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 11px;
+    color: #9bc5bd;
+    margin-bottom: 4px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    background: #102925;
+    border: 1px solid #1f4f47;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.phone-input-wrapper {
+    display: flex;
+    align-items: center;
+    background: #102925;
+    border: 1px solid #1f4f47;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.flag-code {
+    padding: 0 8px;
+    font-size: 13px;
+    color: #ffffff;
+    background: #091a17;
+    border-right: 1px solid #1f4f47;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.phone-input-wrapper input {
+    border: none;
+    background: transparent;
+}
+
+.btn-auth-submit {
+    width: 100%;
+    background-color: #10b981;
+    color: #041612;
+    font-weight: bold;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.btn-auth-submit:hover {
+    background-color: #34d399;
+}
+
+.auth-footer-links {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+.auth-footer-links a {
+    color: #34d399;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.auth-switch-link {
+    color: #34d399;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-content {
+    background-color: #0c211e;
+    color: #fff;
+    margin: 20% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 350px;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+    border: 1px solid #193e38;
+}
+
+.close {
+    color: #9bc5bd;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #fff;
+}
+
+.dropdown-menu {
+    position: fixed;
+    left: 15px;
+    top: 55px;
+    background: #0c211e;
+    border: 1px solid #1b433d;
+    width: 230px;
+    z-index: 2500;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 14px;
+    color: #d6efe9;
+    text-decoration: none;
+    border-bottom: 1px solid #163833;
+    font-size: 13px;
+}
+
+.dropdown-menu a:hover {
+    background: #122e2a;
+    color: #fff;
+}

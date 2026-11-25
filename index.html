@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>አደይ Bet - Professional Betting</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-left">
+            <span class="menu-icon" onclick="toggleProfileMenu()">☰</span>
+            <div class="logo" onclick="goToMainPage()" title="Main Page">አደይ BET</div>
+        </div>
+        
+        <div class="nav-auth-buttons" id="navButtons">
+            <button onclick="openModal('registerModal')" class="btn-register">Register</button>
+            <button onclick="openModal('loginModal')" class="btn-login">Login</button>
+        </div>
+
+        <div class="user-panel" id="userPanel" style="display:none;">
+            <div class="profile-container" onclick="toggleProfileMenu()">
+                <span class="profile-icon">👤</span>
+            </div>
+            <span>Balance: <strong id="userBalance">0.00</strong> ETB</span>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+
+        <!-- 5 Quick Strip Items under አደይ BET -->
+        <section class="top-five-bar" id="topFiveSection">
+            <div class="top-five-item" onclick="switchTab('promotionTab')">
+                <span class="top-five-icon">🎁</span>
+                <span>Promotions</span>
+            </div>
+            <div class="top-five-item" onclick="openGame('Aviator')">
+                <span class="top-five-icon">✈️</span>
+                <span>Aviator</span>
+            </div>
+            <div class="top-five-item" onclick="switchTab('sportTab')">
+                <span class="top-five-icon">⚽</span>
+                <span>Sport</span>
+            </div>
+            <div class="top-five-item" onclick="switchTab('kenoTab')">
+                <span class="top-five-icon">🎱</span>
+                <span>Fast Keno</span>
+            </div>
+            <div class="top-five-item" onclick="switchTab('gamesTab')">
+                <span class="top-five-icon">🎲</span>
+                <span>Games</span>
+            </div>
+        </section>
+        
+        <!-- Auto-moving Hero Banner Slider Section -->
+        <section class="banner-slider" id="mainBannerSection">
+            <div class="slide active"><img src="banner1.jpg" alt="Banner 1" onerror="this.style.background='#132b27'"></div>
+            <div class="slide"><img src="banner2.jpg" alt="Banner 2" onerror="this.style.background='#132b27'"></div>
+            <div class="slide"><img src="banner3.jpg" alt="Banner 3" onerror="this.style.background='#132b27'"></div>
+            <div class="slide"><img src="banner4.jpg" alt="Banner 4" onerror="this.style.background='#132b27'"></div>
+        </section>
+
+        <!-- Manual-only Scrollable Mini Hero Cards (Smaller than Hero, 6 cards total) -->
+        <section class="mini-hero-strip" id="miniHeroSection">
+            <div class="mini-hero-card" onclick="openGame('Aviator')">
+                <img src="game1.jpg" alt="Mini Hero 1" onerror="this.style.background='#16302c'">
+                <p>Aviator</p>
+            </div>
+            <div class="mini-hero-card" onclick="openGame('JetX')">
+                <img src="game2.jpg" alt="Mini Hero 2" onerror="this.style.background='#16302c'">
+                <p>JetX</p>
+            </div>
+            <div class="mini-hero-card" onclick="openGame('Chicken Road')">
+                <img src="game3.jpg" alt="Mini Hero 3" onerror="this.style.background='#16302c'">
+                <p>Chicken Road</p>
+            </div>
+            <div class="mini-hero-card" onclick="openGame('Keno')">
+                <img src="game4.jpg" alt="Mini Hero 4" onerror="this.style.background='#16302c'">
+                <p>Keno</p>
+            </div>
+            <div class="mini-hero-card" onclick="openGame('Game 5')">
+                <img src="game5.jpg" alt="Mini Hero 5" onerror="this.style.background='#16302c'">
+                <p>Game 5</p>
+            </div>
+            <div class="mini-hero-card" onclick="openGame('Game 6')">
+                <img src="game6.jpg" alt="Mini Hero 6" onerror="this.style.background='#16302c'">
+                <p>Game 6</p>
+            </div>
+        </section>
+
+        <!-- 10 Circular Games Section (Horizontal Scrolling) -->
+        <section class="scrolling-games-bar" id="mainScrollSection">
+            <h3>🔥 10 GAMES</h3>
+            <div class="scroll-container" id="scrollingGames"></div>
+        </section>
+
+        <!-- Search Bar -->
+        <div class="search-box-inline" id="searchSection">
+            <input type="search" id="gameSearch" placeholder="Find a Game..." autocomplete="off" onkeyup="filterGames()">
+        </div>
+
+        <!-- Games Grid Section (200 Games, 3 columns) -->
+        <section id="gamesTab" class="tab-content">
+            <h2>All 200 Games</h2>
+            <div class="games-grid" id="gamesGrid"></div>
+        </section>
+
+        <!-- Sport Section (50 Matches) -->
+        <section id="sportTab" class="tab-content active-section">
+            <div class="sport-sub-header">
+                <div class="sport-sub-left">
+                    <span class="live-indicator">🟢 1st half 46:24</span>
+                    <span class="date-tag">07.11.2026 • GMT+3</span>
+                </div>
+                <button type="button" class="sport-invite-btn" onclick="openModal('shareModal')">➕ Invite</button>
+            </div>
+            <div class="sports-container" id="sportsGrid"></div>
+        </section>
+
+        <!-- Dedicated Deposit Page Section -->
+        <section id="depositTab" class="tab-content">
+            <div class="deposit-page-container">
+                <div class="deposit-box">
+                    <div class="telebirr-header">
+                        <img src="telebirr-logo.jpg" alt="Telebirr" class="tele-logo" onerror="this.style.background='#1f2c3a'">
+                        <span>Telebirr & Agent Payment</span>
+                    </div>
+
+                    <div class="agent-info-card">
+                        <div class="agent-top-row">
+                            <div>
+                                <div class="agent-phone-display" id="agentPhoneText">0997791266</div>
+                                <div class="agent-name-display">Mohamed Abdulkarim</div>
+                            </div>
+                            <button type="button" onclick="copyPhone()" class="btn-copy-pill">📋 Copy</button>
+                        </div>
+                        <input type="hidden" id="agentPhone" value="0997791266">
+                        <div class="min-deposit-note">
+                            ⚠️ ቢያንስ 500 ETB ይላኩ · Minimum deposit 500 ETB<br>
+                            ከዚህ ያነሰ ገቢ አይደረግም · Smaller amounts can't be credited
+                        </div>
+                    </div>
+
+                    <div class="deposit-steps-card">
+                        <ul>
+                            <li>ከላይ ባለው አካውንት ቢያንስ 500 ETB ይላኩ<br><span>Send at least 500 ETB to the Telebirr account above</span></li>
+                            <li>ከ Telebirr ያገኙትን የማረጋገጫ SMS ይጠብቁ<br><span>Wait for the confirmation SMS from Telebirr</span></li>
+                            <li>SMS ወይም Transaction ID ከታች ፔስት ያድርጉ 👇<br><span>Paste the SMS or Transaction ID below</span></li>
+                        </ul>
+                    </div>
+
+                    <label class="deposit-field-label" for="depositAmountInput">መጠን · Amount (ETB)</label>
+                    <input type="number" id="depositAmountInput" class="deposit-amount-box" placeholder="0" autocomplete="off">
+
+                    <label class="deposit-field-label" for="smsInput">ደረሰኝ · Confirmation</label>
+                    <textarea id="smsInput" class="deposit-confirm-box" placeholder="SMS ወይም Transaction ID አሁን ፔስት ያድርጉ&#10;Paste your SMS or Transaction ID here..." rows="3"></textarea>
+
+                    <button type="button" onclick="submitDepositStep()" class="btn-deposit-submit">ገንዘብ አስገባ · Deposit</button>
+                    <p class="waiting-text" id="waitingMsg" style="display:none; color: #eab308; margin-top: 12px; font-weight: bold; text-align: center;">
+                        Please wait while the agent confirms your payment...
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Promotion Tab Section -->
+        <section id="promotionTab" class="tab-content">
+            <div class="promotion-page-container">
+                <h2>Promotions & Banners</h2>
+                <div class="promo-banners-stack">
+                    <img src="banner1.jpg" alt="Banner 1" onerror="this.style.background='#132b27'">
+                    <img src="banner2.jpg" alt="Banner 2" onerror="this.style.background='#132b27'">
+                    <img src="banner3.jpg" alt="Banner 3" onerror="this.style.background='#132b27'">
+                    <img src="banner4.jpg" alt="Banner 4" onerror="this.style.background='#132b27'">
+                </div>
+            </div>
+        </section>
+
+        <!-- Keno Tab Section -->
+        <section id="kenoTab" class="tab-content">
+            <h2>Keno Game</h2>
+            <p>Play Keno games and test your luck!</p>
+            <button onclick="openGame('Keno')" class="btn-blue">Start Keno</button>
+        </section>
+
+    </main>
+
+    <!-- Fixed Bottom Navigation Bar -->
+    <nav class="bottom-nav-bar">
+        <button onclick="switchTab('sportTab')" class="active-tab" id="tabBtnSport">⚽ Sports</button>
+        <button onclick="switchTab('gamesTab')" id="tabBtnGames">🎮 Games</button>
+        <button onclick="switchTab('promotionTab')" id="tabBtnPromotion">🎁 Promotion</button>
+        <button onclick="switchTab('depositTab')" id="tabBtnDeposit">💳 Deposit</button>
+        <button onclick="switchTab('kenoTab')" id="tabBtnKeno">🎱 Keno</button>
+    </nav>
+
+    <!-- Profile Menu Dropdown Modal -->
+    <div id="profileDropdown" class="dropdown-menu" style="display:none;">
+        <a href="#" onclick="openModal('withdrawModal'); toggleProfileMenu();">Withdraw</a>
+        <a href="#" onclick="openModal('passwordModal'); toggleProfileMenu();">Password Change</a>
+        <a href="#" onclick="openSupport(); toggleProfileMenu();">Support</a>
+        <a href="#" onclick="openModal('betHistoryModal'); toggleProfileMenu();">Bet History</a>
+        <a href="#" onclick="openModal('transHistoryModal'); toggleProfileMenu();">Transaction History</a>
+        <a href="#" onclick="switchTab('depositTab'); toggleProfileMenu();">Deposit</a>
+        <a href="#" onclick="openModal('promotionModal'); toggleProfileMenu();">Promotion</a>
+        <a href="#" onclick="openModal('bonusModal'); toggleProfileMenu();">Bonus</a>
+        <a href="#" onclick="openModal('gameHistoryModal'); toggleProfileMenu();">Game History</a>
+        <a href="#" onclick="openModal('shareModal'); toggleProfileMenu();">Share</a>
+        <a href="#" onclick="logout();" class="btn-red">Logout</a>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content auth-modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2 class="auth-title">LOGIN</h2>
+            <div class="brand-logo-box">አደይ BET</div>
+            
+            <div class="input-group">
+                <label>Mobile Number *</label>
+                <div class="phone-input-wrapper">
+                    <span class="flag-code">🇪🇹 +251</span>
+                    <input type="text" id="loginPhone" placeholder="Mobile Number" autocomplete="off">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Password *</label>
+                <input type="password" id="loginPass" placeholder="Enter your Password" autocomplete="off">
+            </div>
+
+            <button onclick="loginUser()" class="btn-auth-submit">Login</button>
+            
+            <div class="auth-footer-links">
+                <a href="#" onclick="closeModal('loginModal'); openModal('passwordModal');">Forgot your password?</a>
+                <p>Don't have an account yet? <span class="auth-switch-link" onclick="closeModal('loginModal'); openModal('registerModal');">Register</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content auth-modal-content">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <h2 class="auth-title">REGISTRATION</h2>
+            <div class="brand-logo-box">አደይ BET</div>
+
+            <div class="input-group">
+                <label>First Name</label>
+                <input type="text" id="regFirstName" placeholder="Enter your First Name" autocomplete="off">
+            </div>
+
+            <div class="input-group">
+                <label>Mobile Number *</label>
+                <div class="phone-input-wrapper">
+                    <span class="flag-code">🇪🇹 +251</span>
+                    <input type="text" id="regPhone" placeholder="Enter your Mobile Number" autocomplete="off">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Password *</label>
+                <input type="password" id="regPass" placeholder="Enter your Password" autocomplete="off">
+            </div>
+
+            <div class="input-group">
+                <label>Confirm Password *</label>
+                <input type="password" id="regConfirmPass" placeholder="Confirm your Password" autocomplete="off">
+            </div>
+
+            <button onclick="registerUser()" class="btn-auth-submit">Register</button>
+            
+            <div class="auth-footer-links">
+                <p>Already have an account? <span class="auth-switch-link" onclick="closeModal('registerModal'); openModal('loginModal');">Login</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="withdrawModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('withdrawModal')">&times;</span>
+            <h2>Withdraw Page (Telebirr)</h2>
+            <p style="font-size: 13px; color: #9ab0c7; margin-bottom: 10px;">Agent: Mohamed Abdulkarim (0997791266)</p>
+            <input type="number" id="withdrawAmount" placeholder="Enter withdrawal amount" autocomplete="off">
+            <button onclick="requestWithdraw()" class="btn-red">Withdraw</button>
+        </div>
+    </div>
+
+    <div id="passwordModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('passwordModal')">&times;</span>
+            <h2>Password Change Page</h2>
+            <input type="password" placeholder="Old Password" autocomplete="off" style="margin-bottom:8px;">
+            <input type="password" placeholder="New Password" autocomplete="off" style="margin-bottom:8px;">
+            <button onclick="alert('Password changed successfully'); closeModal('passwordModal')" class="btn-blue">Change</button>
+        </div>
+    </div>
+
+    <div id="betHistoryModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('betHistoryModal')">&times;</span>
+            <h2>Bet History Page</h2>
+            <p>No betting history available.</p>
+        </div>
+    </div>
+
+    <div id="transHistoryModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('transHistoryModal')">&times;</span>
+            <h2>Transaction History Page</h2>
+            <p>No transactions available.</p>
+        </div>
+    </div>
+
+    <div id="promotionModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('promotionModal')">&times;</span>
+            <h2>Promotion Page</h2>
+            <div style="margin: 10px 0;"><img src="banner1.jpg" alt="Banner" style="width:100%; border-radius:6px;" onerror="this.style.background='#132b27'"></div>
+            <p>100% Bonus over 10,000 ETB!</p>
+        </div>
+    </div>
+
+    <div id="bonusModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('bonusModal')">&times;</span>
+            <h2>Bonus Page</h2>
+            <div style="margin: 10px 0;"><img src="banner1.jpg" alt="Banner" style="width:100%; border-radius:6px;" onerror="this.style.background='#132b27'"></div>
+            <p>Current Bonus: 0.00 ETB</p>
+        </div>
+    </div>
+
+    <div id="gameHistoryModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('gameHistoryModal')">&times;</span>
+            <h2>Game History Page</h2>
+            <p>No game history available.</p>
+        </div>
+    </div>
+
+    <div id="shareModal" class="modal">
+        <div class="modal-content text-center">
+            <span class="close" onclick="closeModal('shareModal')">&times;</span>
+            <h2>Share Page</h2>
+            <p>Share this link with your friends:</p>
+            <input type="text" value="https://t.me/AdeyBetBot" readonly style="text-align:center; margin:10px 0;">
+            <button onclick="alert('Link copied!')" class="btn-blue">Copy Link</button>
+        </div>
+    </div>
+
+    <div id="gameModal" class="modal">
+        <div class="modal-content text-center">
+            <span class="close" onclick="closeModal('gameModal')">&times;</span>
+            <h2 id="activeGameTitle">Game</h2>
+            <p id="gameMessage" class="error-text" style="margin:15px 0; color:#ff6b6b;">Insufficient Balance!</p>
+            <button onclick="closeModal('gameModal')" class="btn-blue">OK</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
